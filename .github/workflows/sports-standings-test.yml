@@ -1,8 +1,11 @@
 name: Sports Update Email - TEST VERSION
 
 on:
-  workflow_dispatch:  # Only manual triggering for testing
-  # Removed schedule and push triggers for safety
+  schedule:
+    # Run once tonight at midnight Pacific (3 AM Eastern) on 8/28
+    - cron: '0 7 28 8 *'
+  workflow_dispatch:  # Keep manual triggering for additional testing
+  # Removed push triggers for safety
 
 jobs:
   send-sports-email-test:
