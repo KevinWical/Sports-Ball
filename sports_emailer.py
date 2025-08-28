@@ -9,7 +9,8 @@ import smtplib
 import requests
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+import pytz
 import json
 import re
 import html
@@ -2201,7 +2202,7 @@ class SportsEmailer:
                 <h1>🏀🏈⚾🏒 Sports Update</h1>
                 <p>Here are the latest NBA, NFL, MLB, and NHL standings and recent game results for you.</p>
                 <p>Data is scraped from ESPN and CBS Sports. May contain errors.</p>
-                <p><em>Generated on {datetime.now().strftime('%B %d, %Y at %I:%M %p')}</em></p>
+                <p><em>Generated on {datetime.now(pytz.timezone('US/Pacific')).strftime('%B %d, %Y at %I:%M %p %Z')}</em></p>
             </div>
             
             {self.format_nba_standings(nba_standings)}
