@@ -104,13 +104,13 @@ class SportsEmailer:
     def format_recent_games(self, games, sport_name):
         """Format recent games for email"""
         if not games:
-            return f"<h3>🏈 Recent {sport_name.upper()} Games</h3><p><strong>⚠️ No Recent Games Available</strong><br>Recent {sport_name} games could not be retrieved at this time. This may be due to:<br>• No games played in the last 7 days<br>• ESPN API being temporarily unavailable<br>• Season being in progress<br><br>Please check back later for updated game results.</p>"
+            return f"<h3>Recent {sport_name.upper()} Games</h3><p><strong>⚠️ No Recent Games Available</strong><br>Recent {sport_name} games could not be retrieved at this time. This may be due to:<br>• No games played in the last 7 days<br>• ESPN API being temporarily unavailable<br>• Season being in progress<br><br>Please check back later for updated game results.</p>"
         
-        html = f"<h3>🏈 Recent {sport_name.upper()} Games</h3>"
+        html = f"<h3>Recent {sport_name.upper()} Games</h3>"
         html += "<table border='1' style='border-collapse: collapse; width: 100%; margin-bottom: 20px;'>"
         html += "<tr><th>Date</th><th>Matchup</th><th>Score</th><th>Winner</th></tr>"
         
-        for game in games[:10]:  # Show last 10 games
+        for game in games:  # Show all 
             # Format date
             try:
                 from datetime import datetime
